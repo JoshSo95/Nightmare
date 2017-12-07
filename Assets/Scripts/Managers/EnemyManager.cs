@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start ()
     {
+        //InvokeRepeating - repeats without using a timer 
         InvokeRepeating ("Spawn", spawnTime, spawnTime);
     }
 
