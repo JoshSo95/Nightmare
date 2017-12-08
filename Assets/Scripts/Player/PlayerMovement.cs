@@ -24,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal"); //raw axis values are either -1, 0, 1.
         float v = Input.GetAxisRaw("Vertical"); //no values inbetween so char will snap to max speed
 
-        Move(h, v);
-        Turning();
-        Animating(h, v);
+        //Move(h, v);
+        //Turning();
+        //Animating(h, v);
     }
 
 

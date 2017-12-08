@@ -17,6 +17,10 @@ public class PlayerShooting : MonoBehaviour
     Light gunLight;
     float effectsDisplayTime = 0.2f;
 
+    //
+    public RightJoystick rightJoystick; // the game object containing the RightJoystick script
+    private Vector3 rightJoystickInput; // hold the input of the Right Joystick
+
 
     void Awake ()
     {
@@ -31,8 +35,9 @@ public class PlayerShooting : MonoBehaviour
     void Update ()
     {
         timer += Time.deltaTime;
+        rightJoystickInput = rightJoystick.GetInputDirection();
 
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
+        if (rightJoystickInput!= Vector3.zero && timer >= timeBetweenBullets && Time.timeScale != 0)
         {
             Shoot ();
         }
