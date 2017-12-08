@@ -80,28 +80,12 @@ public class DualJoystickPlayerController : MonoBehaviour
             //anim.SetBool("isAttacking", false);
         }
 
-        // if there is only input from the left joystick
-        //if (leftJoystickInput != Vector3.zero && rightJoystickInput == Vector3.zero)
+        // if there is  input from the left joystick
         if (leftJoystickInput != Vector3.zero)
         {
             // calculate the player's direction based on angle
             float tempAngle = Mathf.Atan2(zMovementLeftJoystick, xMovementLeftJoystick);
-            //xMovementLeftJoystick *= Mathf.Abs(Mathf.Cos(tempAngle));
-            //zMovementLeftJoystick *= Mathf.Abs(Mathf.Sin(tempAngle));
 
-            //leftJoystickInput = new Vector3(xMovementLeftJoystick, 0, zMovementLeftJoystick);
-            //leftJoystickInput = transform.TransformDirection(leftJoystickInput);
-            //leftJoystickInput *= moveSpeed;
-
-            // rotate the player to face the direction of input
-            //Vector3 temp = transform.position;
-            //temp.x += xMovementLeftJoystick;
-            //temp.z += zMovementLeftJoystick;
-            //Vector3 lookDirection = temp - transform.position;
-            //if (lookDirection != Vector3.zero)
-            //{
-            //    rotationTarget.localRotation = Quaternion.Slerp(rotationTarget.localRotation, Quaternion.LookRotation(lookDirection), rotationSpeed * Time.deltaTime);
-            //}
             if (anim != null)
             {
                 anim.SetBool("IsWalking", true);
@@ -123,8 +107,7 @@ public class DualJoystickPlayerController : MonoBehaviour
 
         }
 
-        // if there is only input from the right joystick
-        //if (leftJoystickInput == Vector3.zero && rightJoystickInput != Vector3.zero)
+        // if there is  input from the right joystick
         if (rightJoystickInput != Vector3.zero)
         {
             // calculate the player's direction based on angle
@@ -137,27 +120,11 @@ public class DualJoystickPlayerController : MonoBehaviour
             temp.x += xMovementRightJoystick;
             temp.z += zMovementRightJoystick;
             Vector3 lookDirection = temp - transform.position;
-            //if (lookDirection != Vector3.zero)
-            //{
-            //    rotationTarget.localRotation = Quaternion.Slerp(rotationTarget.localRotation, Quaternion.LookRotation(lookDirection) * Quaternion.Euler(0, 45f, 0), rotationSpeed * Time.deltaTime);
-
-            //    //Quaternion newRotation = Quaternion.LookRotation(lookDirection);
-            //    //rigidBody.MoveRotation(newRotation);
-
-            //}
-
-
-
 
             Vector3 dir = temp - transform.position;
             dir.y = 0f;
             Quaternion newRotation = Quaternion.LookRotation(dir);
             rigidBody.MoveRotation(newRotation);
-
-
-
-
-            //anim.SetBool("isAttacking", true);
         }
 
     }
